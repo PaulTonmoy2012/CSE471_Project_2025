@@ -13,7 +13,6 @@ const registerPatient = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required: patientId, name, contact, medicalInfo, bloodGroup, medicine' });
     }
 
-    // Check if patientId already exists
     const existingPatient = await Patient.findOne({ patientId });
     if (existingPatient) {
       return res.status(400).json({ message: 'Patient with this ID already exists' });
@@ -44,7 +43,7 @@ router.post('/register-patient', registerPatient);
 module.exports = router;
 
 // Route to get all patients
-router.get('/getPatients', async (req, res) => {
+router.get('/getPatients_1440', async (req, res) => {
   try {
     const patients = await Patient.find(); // Fetch all patients from the database
     res.status(200).json(patients); // Send the data as a JSON response

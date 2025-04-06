@@ -5,7 +5,7 @@ require('dotenv').config();
 const connectDB = require('./dbconnect');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1440;
 
 // Middleware
 app.use(bodyParser.json());
@@ -21,6 +21,9 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/api', user_controller);
 
+
+const update_patient = require('./controller/update_patient');
+app.use('/api', update_patient);
 
 
 // Start server
